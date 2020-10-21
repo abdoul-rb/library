@@ -81,8 +81,10 @@ function yoda(str) {
    return str.split(' ').reverse().join(' ');
 }
 
-function vig(str) {
-   if (typeof str !== "string" || str === "") return "";
+function vig(msg, key) {
+   if (typeof msg !== "string" || msg === "") return "";
+   if (typeof key !== "string" || key === "") return "";
+
 
    return str.split(' ').reverse().join(' ');
 }
@@ -108,7 +110,8 @@ function prop_access(obj, path) {
       tmp[i] = arrayProps[i];
 
       if(obj === undefined) {
-         return tmp.join('.') + ' not exist';
+         console.log(tmp.join('.') + ' not exist');
+         return "";
       } 
    }
 
