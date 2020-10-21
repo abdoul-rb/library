@@ -14,7 +14,7 @@ function capitalize(str) {
    return words.join(' ');
 }
 
-function pascalCase(str) {
+function camelCase(str) {
    if (typeof str !== "string" || str === "") return "";
 
    var words = str.toLowerCase().split(' ');
@@ -85,8 +85,19 @@ function vig(msg, key) {
    if (typeof msg !== "string" || msg === "") return "";
    if (typeof key !== "string" || key === "") return "";
 
+   var code_lettre = 0;
+   var shift = 0;
+   var letter = '';
+   msg = msg.toLowerCase();
+   key =  key.toLowerCase();
 
-   return str.split(' ').reverse().join(' ');
+   for (var i = 0; i < msg.length; i++) {
+      code_lettre = msg.charCodeAt(i - 1) - 65;
+      shift = key.charCodeAt((i - 1) % key.length) - 65;
+      letter += String.fromCharCode(65 - (code_lettre + shift) % 26);
+   }
+
+   return letter;
 }
 
 const prairie = {
@@ -118,7 +129,8 @@ function prop_access(obj, path) {
    return obj;
 }
 
-console.log(prop_access(prairie, 'animal.type.name'));
+console.log(vig('Abdoul rahim Bah', 'Hab'))
+//console.log(prop_access(prairie, 'animal.type.name'));
 
 /* console.log(ucfirst('rahim'));
 console.log(capitalize('Bonjour abdoul rahim'));
