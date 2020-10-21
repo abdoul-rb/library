@@ -120,7 +120,7 @@ function prop_access(obj, path) {
       obj = obj[arrayProps[i]];
       tmp[i] = arrayProps[i];
 
-      if(obj === undefined) {
+      if(obj === null) {
          console.log(tmp.join('.') + ' not exist');
          return "";
       } 
@@ -129,7 +129,7 @@ function prop_access(obj, path) {
    return obj;
 }
 
-console.log(vig('Abdoul rahim Bah', 'Hab'))
+console.log(vig('LEMESSAGEACRYPTER', 'MACLEF'))
 //console.log(prop_access(prairie, 'animal.type.name'));
 
 /* console.log(ucfirst('rahim'));
