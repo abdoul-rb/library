@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>By Fremulon</title>
+	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="px-16 pb-16">
+	<div id="app">
+		<header class="flex items-center justify-between py-4 mb-4">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="text-gray-500" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+		</header>
+		<main>
+			<div class="hidden sm:block w-full sm:w-9/12 lg:w-7/12 relative">
+				<div class="absolute transform -translate-x-12 translate-y-1/2 left-0 top-0 h-full text-gray-500">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform hover:text-gray-700 hover:-translate-x-2 transition duration-500" @click.prevent="handleSwitch">
+						<polyline points="15 18 9 12 15 6"></polyline>
+					</svg>
+				</div>
+				<div>
+					<img :src="selectedImage.link" :alt="selectedImage.id" class="w-full object-cover" style="max-height: 533px">
+				</div>
+				<div class="absolute transform translate-x-12 translate-y-1/2 right-0 top-0 h-full text-gray-500">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform hover:text-gray-700 hover:translate-x-2 transition duration-500" @click.prevent="handleSwitch">
+						<polyline points="9 18 15 12 9 6"></polyline>
+					</svg>
+				</div>
+			</div>
+			<div class="py-4">
+				<a href="#information" class="uppercase font-semibold text-xs">
+					Information
+				</a>
+			</div>
+			<div class="mt-16">
+				<h2 class="font-extrabold text-4xl sm:text-5xl max-w-2xl leading-none">
+					AUDEMARS PIGUET'S NEW MUSEUM
+				</h2>
+				<div class="text-sm font-normal max-w-3xl leading-relaxed mt-6 text-gray-900">
+					<p>
+						Lorem ipsum dolor sit ametipisicing elit
+					</p>
+					<p class="mt-3">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid hic laborum quaerat, magnam qui, beatae veniam vero cum consequuntur quam. Aliquam assumenda suscipit saepe quaerat in? Non quibusdam, atque.
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam repellat qui, explicabo aliquid minus, doloremque nihil id vero, iure repellendus numquam cupiditate unde. Doloribus velit officia ducimus dolor, tempore, tempora!
+					</p>
+					<p class="mt-3">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid hic laborum quaerat, magnam qui, beatae veniam vero cum consequuntur quam. Aliquam assumenda suscipit saepe quaerat in? Non quibusdam, atque.
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam repellat qui, explicabo aliquid minus, doloremque nihil id vero, iure repellendus numquam cupiditate unde. Doloribus velit officia ducimus dolor, tempore, tempora!
+					</p>
+				</div>
+			</div>
+			<div class="mt-16 max-w-5xl">
+				<div class="grid grid-cols-3 gap-12">
+					<a href="#" class="relative" v-for="image in images" :id="`image-${image.id}`" @click.prevent="handleSelectedImage(image)">
+						<div class="absolute top-0 right-0 bg-black h-full w-full opacity-0 hover:opacity-75 transition-all duration-500"></div>
+						<img :src="image.link" :alt="image.id" class="h-64 w-full object-cover">
+					</a>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+	<script>
+		let app = new Vue({
+			el : '#app',
+			data () {
+				return {
+					selectedImage : [],
+					images : [ 
+					{ 
+						id : 1, 
+						link : 'https://images.unsplash.com/photo-1593642703013-5a3b53c965f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+					},{
+						id : 2, 
+						link : 'https://images.unsplash.com/photo-1592750092323-6353556e4824?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+					},{
+						id : 3, 
+						link : 'https://images.unsplash.com/photo-1593642634443-44adaa06623a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+					},{
+						id : 4,
+						link : 'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+					},
+					{
+						id : 5,
+						link : 'https://images.unsplash.com/photo-1593642532454-e138e28a63f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+					},
+					]
+				}
+			},
+			methods : {
+				handleSelectedImage(image) {
+					window.scroll({
+						top: 0,
+						behavior: 'smooth'
+					})
+					this.selectedImage = image
+				},
+				handleSwitch () {
+					let nextOrPreviousImage = this.images.filter((image) => {
+						return image.id != this.selectedImage.id
+					})
+					this.selectedImage = _.shuffle(nextOrPreviousImage)[0]
+				}
+			},
+			mounted () {
+				this.selectedImage = this.images[0]
+			}
+		})
+	</script>
+</body>
+</html>
