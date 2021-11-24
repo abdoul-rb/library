@@ -1,6 +1,1 @@
-
-
-
-## Exercice 1
-
-ucfirst()
+# Quelque fonction utilitaires 
