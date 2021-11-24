@@ -1,0 +1,42 @@
+name: symfony
+recipe: laravel
+
+config:
+php: '7.4'
+webroot: public
+xdebug: false
+via: nginx:1.18
+database: postgres:12
+cache: redis:5
+
+services:
+appserver_nginx:
+scanner: false
+mailhog:
+type: mailhog:v1.0.0
+portforward: true
+hogfrom:
+- appserver
+node:
+type: node:14
+chromedriver:
+type: compose
+app_mount: false
+services:
+image: selenium/standalone-chrome:85.0
+command: /opt/bin/entry_point.sh
+expose:
+- "4444"
+
+tooling:
+redis-cli:
+service: cache
+console:
+service: appserver
+cmd: php bin/console
+yarn:
+service: node
+
+proxy:
+mailhog:
+- mailhog-symfony.lndo.site
