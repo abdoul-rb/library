@@ -1,0 +1,28 @@
+version: "3.3"
+
+services:
+  php:
+    build: ./docker
+    command: php artisan serve --host 0.0.0.0
+    depends_on:
+      - postgresql
+    ports:
+      - "8000:8000"
+    volumes:
+      - './:/api'
+    working_dir: /api
+    env_file: .env
+
+  postgresql:
+    image: 'postgres'
+    environment:
+      - POSTGRES_DB=events
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - psql_data:/var/lib/postgresql/data
+
+volumes:
+  psql_data:
