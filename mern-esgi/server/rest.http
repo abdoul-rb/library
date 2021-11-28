@@ -1,0 +1,68 @@
+GET http://localhost:3000/codes
+###
+POST http://localhost:3000/codes
+Content-Type: application/json
+
+{
+    "code": 610,
+    "message": "Test",
+    "description": "Test desc"
+}
+
+###
+PUT http://localhost:3000/codes/609c18218b611d53cfb192a2
+Content-Type: application/json
+
+{
+    "code": 484,
+    "message": "Test 484"
+}
+
+###
+GET http://localhost:3000/users
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "firstname": "Jean",
+    "lastname": "Dupont",
+    "username": "jd2@jd.fr",
+    "password": "password"
+}
+
+###
+GET http://localhost:3000/users/2
+
+
+###
+PUT http://localhost:3000/users/8
+Content-Type: application/json
+
+{
+    "password": "jdjd.fr"
+}
+
+###
+DELETE http://localhost:3000/users/2
+
+###
+GET http://localhost:3000/articles
+###
+POST http://localhost:3000/articles
+Content-Type: application/json
+
+{
+    "title": "Test",
+    "content": "Test content",
+    "tags":[ "salon", "cuisine", "sdb"],
+    "authorId": 8
+}
+###
+PUT http://localhost:3000/articles/5
+Content-Type: application/json
+
+{
+    "title": "Test 5"
+}
