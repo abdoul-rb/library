@@ -1,5 +1,5 @@
 /** Returns the array max numbers */
-function findLargest(numbers) {
+function find_largest(numbers) {
     
     max = numbers[0];
 
@@ -12,7 +12,7 @@ function findLargest(numbers) {
     return max;
 }
 
-function findLargest_(numbers) {
+function find_largest_(numbers) {
 
     let max = numbers.reduce(function (acc, value) {
         return Math.max(acc, value);
@@ -22,4 +22,4 @@ function findLargest_(numbers) {
 }
 
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-console.log(findLargest_(numbers));
+console.log(find_largest_(numbers));

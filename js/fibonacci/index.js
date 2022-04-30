@@ -1,4 +1,4 @@
-const fibonacci = ( () => {
+const fibonacci_1 = (() => {
     const cache = {};
   
     return num => {
@@ -10,13 +10,13 @@ const fibonacci = ( () => {
         return cache[num]
       }
   
-      const result = fibonacci(num - 1) + fibonacci(num - 2);
+      const result = fibonacci_1(num - 1) + fibonacci_1(num - 2);
       cache[num] = result;
       return result;
     };
 })
   
-const fibonacci = num => {
+const fibonacci_2 = (num) => {
     if (num < 2) {
         return num;
     }
