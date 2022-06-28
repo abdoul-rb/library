@@ -10,22 +10,22 @@ exports.Scrapper = function ({ url, body, ...options }, processData, saveData) {
   const protocol = url.startsWith("https") ? https : http;
   if (body) {
     options.headers["Content-type"] ??= "application/x-www-form-urlencoded";
-    if (
-      options.headers["Content-type"] === "application/x-www-form-urlencoded"
-    ) {
+
+    if (options.headers["Content-type"] === "application/x-www-form-urlencoded") {
       body = querystring.stringify(body);
     }
     if (options.headers["Content-type"] === "application/json") {
       body = JSON.stringify(body);
     }
+
     options.headers["Content-Length"] = Buffer.byteLength(body);
   }
 
   const request = protocol.request(url, options, (response) => {
     let data = [];
-    response.on("data", (chunk) => data.push(chunk));
+    response.on('data', (chunk) => data.push(chunk));
 
-    response.on("end", () => {
+    response.on('end', () => {
       data = Buffer.concat(
         data,
         data.reduce((acc, buff) => acc + Buffer.byteLength(buff), 0)
@@ -43,6 +43,7 @@ exports.Scrapper = function ({ url, body, ...options }, processData, saveData) {
       saveData(data);
     });
   });
+
   this.scrap = () => {
     if (body) request.write(body);
     request.end();
@@ -52,6 +53,7 @@ exports.Scrapper = function ({ url, body, ...options }, processData, saveData) {
 exports.CSVGenerator = (data, filename = "./exports.csv") => {
   const csvHeaders = Object.keys(data[0]).join(",");
   const csvBody = data.map((it) => Object.values(it).join(","));
+  
   exports.FileGenerator(csvHeaders + "\n" + csvBody.join("\n"), filename);
 };
 
