@@ -4,7 +4,12 @@ Class Student {
 
 }
 
+$fileName = 'fidelite2022-05.csv';
+
 if (($handle = fopen($fileName, "r")) !== FALSE) {
+    $data = fgetcsv($handle, 1000, ",");
+
+    var_dump(count($data));
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         $num = count($data);
         $row++;
